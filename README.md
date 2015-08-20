@@ -132,6 +132,8 @@ define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
 ?>
 ```
 
+> ATENÇÃO: não deixe linhas em branco no final de arquivos `.php`!
+
 Note que nesse arquivo é especificado um usuário `wordpress` com uma
 senha `<senha>`, com acesso a um banco de dados MySQL. Para criar esse
 usuário e senha no MySQL (e a própria base de dados), crie um arquivo
@@ -180,6 +182,23 @@ Wordpress através da interface gráfica.
 
 Para mais detalhes das permissões de diretórios do Wordpress, veja
 [Changing file permissions][].
+
+### Configurando o RSS
+
+O RSS já deve estar configurado normalmente com a instalação padrão. O
+endereço para as entradas RSS fica em `blog.leg.ufp.br/feed`.
+
+No começo, tivemos um problema com o RSS que parecia estar
+desconfigurado. Depois de muitas buscas, várias pessoas relataram o
+mesmo problema, que no final das contas era causado por linhas em branco
+ao final de arquivos `.php`. Foi feito uma busca nos principais arquivos
+php e as linhas em branco foram removidas. No entanto, o principal
+arquivo que estava com linha em branco era o
+`/etc/wordpress/config-blog.leg.ufpr.br.php`, o primeiro a ser criado
+durante a configuração do blog (conforme descrito acima). Após remover a
+linha em branco no final desse arquivo, o RSS funcionou corretamente.
+
+Um site para verificar a validade do RSS é o http://feedvalidator.org.
 
 ### Configurando servidor FTP e permitindo acesso pela interface
 
